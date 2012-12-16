@@ -65,7 +65,7 @@ public abstract class BaseDaoImpl<T extends BaseEntity, PK extends Serializable>
             return null;
         }
         try {
-            String queryString = String.format("Select from %s t where t.id=:%s", getClassName(), id);
+            String queryString = String.format("Select from %s t where t.id=:valueId", getClassName());
             Query query = entityManager.createQuery(queryString);
             query.setParameter("valueId", id);
 

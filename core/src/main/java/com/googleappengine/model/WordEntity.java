@@ -16,8 +16,8 @@ public class WordEntity extends BaseEntity {
     @Override
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    public void setId(Long id) {
-        super.setId(id);
+    public Long getId() {
+        return super.getId();
     }
 
     public String getWord() {
