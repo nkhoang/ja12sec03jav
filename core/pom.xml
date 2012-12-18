@@ -30,27 +30,6 @@
                 <executions>
                 </executions>
             </plugin>
-
-            <plugin>
-                <groupId>org.datanucleus</groupId>
-                <artifactId>maven-datanucleus-plugin</artifactId>
-                <configuration>
-                    <verbose>true</verbose>
-                    <api>JPA</api>
-                    <mappingIncludes>**/*.jdo, **/model/**.class</mappingIncludes>
-                    <enhancerName>ASM</enhancerName>
-                    <!-- do not set this to true - fixed the error in windows -->
-                    <fork>false</fork>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>enhance</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 
@@ -140,10 +119,6 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-        </dependency>
         <!-- logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -232,6 +207,10 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
         </dependency>
     </dependencies>
     <properties>
