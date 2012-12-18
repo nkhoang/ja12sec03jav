@@ -59,7 +59,7 @@ public abstract class BaseDaoImpl<T extends BaseEntity, PK extends Serializable>
     @SuppressWarnings("unchecked")
     public T get(PK id) {
         if (LOG.isDebugEnabled()) {
-            LOG.debug("Getting object type of %s with id: [%s]", getClassName(), id);
+            LOG.debug(String.format("Getting object type of %s with id: [%s]", getClassName(), id));
         }
         if (id == null) {
             return null;
@@ -87,7 +87,7 @@ public abstract class BaseDaoImpl<T extends BaseEntity, PK extends Serializable>
             return null;
         }
         if (LOG.isDebugEnabled()) {
-            LOG.debug("Save an object type of %s with id: %s.", getClassName(), e.getId());
+            LOG.debug(String.format("Save an object type of %s.", getClassName()));
         }
 
         entityManager.persist(e);
@@ -101,7 +101,7 @@ public abstract class BaseDaoImpl<T extends BaseEntity, PK extends Serializable>
     public T update(T e) {
         T result = null;
         if (LOG.isDebugEnabled()) {
-            LOG.debug("Update an object type of %s with id: %s.", getClassName(), e.getId());
+            LOG.debug(String.format("Update an object type of %s with id: %s.", getClassName(), e.getId()));
         }
         try {
             entityManager.merge(e);

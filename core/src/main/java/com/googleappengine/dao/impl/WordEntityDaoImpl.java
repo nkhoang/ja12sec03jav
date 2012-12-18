@@ -21,7 +21,7 @@ public class WordEntityDaoImpl extends BaseDaoImpl<WordEntity, Long> implements 
     private static final Logger LOG = LoggerFactory.getLogger(WordEntityDaoImpl.class.getCanonicalName());
 
     public String getClassName() {
-        return this.getClass().getCanonicalName();
+        return WordEntity.class.getCanonicalName();
     }
 
     @SuppressWarnings("unchecked")

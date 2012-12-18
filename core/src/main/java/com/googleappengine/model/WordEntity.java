@@ -53,4 +53,9 @@ public class WordEntity extends BaseEntity {
     public void prePersist() {
         this.timeStamp = System.currentTimeMillis();
     }
+
+    @Override
+    public String toString() {
+        return String.format("[id: %s, description: %s, time: %s]", getId(), getWord(), getTimeStamp());
+    }
 }
