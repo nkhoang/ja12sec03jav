@@ -31,6 +31,26 @@
                 </executions>
             </plugin>
 
+            <plugin>
+                <groupId>org.datanucleus</groupId>
+                <artifactId>maven-datanucleus-plugin</artifactId>
+                <configuration>
+                    <verbose>true</verbose>
+                    <api>JPA</api>
+                    <mappingIncludes>**/*.jdo, **/model/**.class</mappingIncludes>
+                    <enhancerName>ASM</enhancerName>
+                    <!-- do not set this to true - fixed the error in windows -->
+                    <fork>false</fork>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>enhance</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -98,6 +118,10 @@
             <groupId>com.google.appengine</groupId>
             <artifactId>appengine-api-labs</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.google.appengine</groupId>
+            <artifactId>appengine-testing</artifactId>
+        </dependency>
         <!-- for google mail -->
         <dependency>
             <groupId>javax.mail</groupId>
@@ -115,6 +139,10 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
         </dependency>
         <!-- logging -->
         <dependency>
@@ -199,6 +227,11 @@
         <dependency>
             <groupId>commons-httpclient</groupId>
             <artifactId>commons-httpclient</artifactId>
+        </dependency>
+        <!-- testing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
         </dependency>
     </dependencies>
     <properties>

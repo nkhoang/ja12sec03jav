@@ -5,6 +5,8 @@ import com.googleappengine.model.WordEntity;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Query;
 import java.util.List;
@@ -13,6 +15,8 @@ import java.util.List;
  * DAO Implementation.
  * @author hnguyen.
  */
+@Repository
+@Transactional
 public class WordEntityDaoImpl extends BaseDaoImpl<WordEntity, Long> implements WordEntityDao {
     private static final Logger LOG = LoggerFactory.getLogger(WordEntityDaoImpl.class.getCanonicalName());
 

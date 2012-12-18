@@ -151,6 +151,11 @@
                 <artifactId>appengine-api-labs</artifactId>
                 <version>${appengine-SDK.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.google.appengine</groupId>
+                <artifactId>appengine-testing</artifactId>
+                <version>${appengine-SDK.version}</version>
+            </dependency>
             <!-- for google mail -->
             <dependency>
                 <groupId>javax.mail</groupId>
@@ -342,6 +347,12 @@
                 <artifactId>commons-httpclient</artifactId>
                 <version>${commons-httpclient.version}</version>
             </dependency>
+            <!-- testing -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -375,6 +386,7 @@
         <commons.configuration.version>1.7</commons.configuration.version>
         <commons.fileupload.version>1.2.2</commons.fileupload.version>
         <commons.io.version>2.1</commons.io.version>
+        <junit.version>4.10</junit.version>
     </properties>
     <profiles>
     </profiles>

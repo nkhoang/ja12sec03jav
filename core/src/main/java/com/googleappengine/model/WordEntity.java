@@ -20,6 +20,11 @@ public class WordEntity extends BaseEntity {
         return super.getId();
     }
 
+    @Override
+    public void setId(Long id) {
+        super.setId(id);
+    }
+
     public String getWord() {
         return word;
     }
