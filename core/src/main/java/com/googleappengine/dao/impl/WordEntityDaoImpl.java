@@ -1,5 +1,6 @@
 package com.googleappengine.dao.impl;
 
+import com.google.appengine.api.datastore.Key;
 import com.googleappengine.dao.WordEntityDao;
 import com.googleappengine.model.WordEntity;
 import org.apache.commons.lang.StringUtils;
@@ -17,7 +18,7 @@ import java.util.List;
  */
 @Repository
 @Transactional
-public class WordEntityDaoImpl extends BaseDaoImpl<WordEntity, Long> implements WordEntityDao {
+public class WordEntityDaoImpl extends BaseDaoImpl<WordEntity, Key> implements WordEntityDao {
     private static final Logger LOG = LoggerFactory.getLogger(WordEntityDaoImpl.class.getCanonicalName());
 
     public String getClassName() {
@@ -35,7 +36,7 @@ public class WordEntityDaoImpl extends BaseDaoImpl<WordEntity, Long> implements 
         if (LOG.isDebugEnabled()) {
             LOG.debug(String.format("Getting word entity by name: %s", word));
         }
-        String queryString = String.format("select from %s u where u.name=:word", getClassName());
+        String queryString = String.format("select from %s u where u.word=:word", getClassName());
         Query query = entityManager.createQuery(queryString);
         query.setParameter("word", word);
 

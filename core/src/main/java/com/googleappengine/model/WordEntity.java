@@ -1,27 +1,50 @@
 package com.googleappengine.model;
 
+import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.Text;
 
 import javax.persistence.*;
 
 @Entity
+@Table(name = "WORD")
 public class WordEntity extends BaseEntity {
+    /**
+     * Word Type.
+     */
+    public enum WordType {
+        ADJECTIVE, ADVERT, NOUN, PRONOUN, VERB
+    }
+
+    public WordEntity() {}
+
+    public WordEntity(String description, WordType type) {
+        this.word = description;
+        this.wordType = type;
+    }
+
     @Basic
+    @Column(name = "DESCRIPTION")
     private String word;
     @Lob
+    @Column(name = "DATA")
     private Text wordJSON;
     @Basic
     private Long timeStamp;
 
+    @Enumerated
+    @Column(name = "WORD_TYPE")
+    private WordType wordType;
+
     @Override
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    public Long getId() {
+    @Column(name = "WORD_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Key getId() {
         return super.getId();
     }
 
     @Override
-    public void setId(Long id) {
+    public void setId(Key id) {
         super.setId(id);
     }
 
@@ -49,6 +72,14 @@ public class WordEntity extends BaseEntity {
         this.timeStamp = timeStamp;
     }
 
+    public WordType getWordType() {
+        return wordType;
+    }
+
+    public void setWordType(WordType wordType) {
+        this.wordType = wordType;
+    }
+
     @PrePersist
     public void prePersist() {
         this.timeStamp = System.currentTimeMillis();
@@ -56,6 +87,7 @@ public class WordEntity extends BaseEntity {
 
     @Override
     public String toString() {
-        return String.format("[id: %s, description: %s, time: %s]", getId(), getWord(), getTimeStamp());
+        return String.format("[id: %s, description: %s, time: %s, type: %s]", getId(), getWord(), getTimeStamp(),
+                getWordType().name());
     }
 }

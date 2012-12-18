@@ -1,5 +1,6 @@
 package com.googleappengine.dao;
 
+import com.google.appengine.api.datastore.Key;
 import com.googleappengine.model.WordEntity;
 
 /**
@@ -7,7 +8,7 @@ import com.googleappengine.model.WordEntity;
  *
  * @author hnguyen.
  */
-public interface WordEntityDao extends BaseDao<WordEntity, Long> {
+public interface WordEntityDao extends BaseDao<WordEntity, Key> {
 
     /**
      * Get word by word description.

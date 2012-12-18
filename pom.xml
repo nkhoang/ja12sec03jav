@@ -48,11 +48,12 @@
             <plugin>
                 <groupId>org.datanucleus</groupId>
                 <artifactId>maven-datanucleus-plugin</artifactId>
-                <version>1.1.4</version>
+                <version>3.1.1</version>
                 <configuration>
                     <verbose>true</verbose>
                     <api>JPA</api>
-                    <mappingIncludes>**/*.jdo, **/model/**.class</mappingIncludes>
+                    <verbose>true</verbose>
+                    <persistenceUnitName>pum</persistenceUnitName>
                     <enhancerName>ASM</enhancerName>
                     <!-- do not set this to true - fixed the error in windows -->
                     <fork>false</fork>
@@ -77,25 +78,14 @@
         <dependencies>
             <dependency>
                 <groupId>org.datanucleus</groupId>
-                <artifactId>datanucleus-jpa</artifactId>
-                <version>${datanucleus.version}</version>
+                <artifactId>datanucleus-api-jpa</artifactId>
+                <version>3.1.1</version>
             </dependency>
             <!-- persistence -->
             <dependency>
                 <groupId>org.apache.geronimo.specs</groupId>
-                <artifactId>geronimo-jpa_3.0_spec</artifactId>
-                <version>${geronimo-jpa_3.0_spec.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.jdo</groupId>
-                <artifactId>jdo2-api</artifactId>
-                <version>2.3-eb</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>javax.transaction</groupId>
-                        <artifactId>transaction-api</artifactId>
-                    </exclusion>
-                </exclusions>
+                <artifactId>geronimo-jpa_2.0_spec</artifactId>
+                <version>1.1</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.geronimo.specs</groupId>
@@ -105,24 +95,12 @@
             <dependency>
                 <groupId>org.datanucleus</groupId>
                 <artifactId>datanucleus-core</artifactId>
-                <version>1.1.6</version>
+                <version>3.1.1</version>
                 <scope>runtime</scope>
                 <exclusions>
                     <exclusion><!-- Use geronimo-jta_1.1_spec instead -->
                         <groupId>javax.transaction</groupId>
                         <artifactId>transaction-api</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.datanucleus</groupId>
-                <artifactId>datanucleus-jpa</artifactId>
-                <version>${datanucleus.version}</version>
-                <scope>runtime</scope>
-                <exclusions>
-                    <exclusion><!-- Use geronimo-jpa_3.0_spec instead -->
-                        <groupId>javax.persistence</groupId>
-                        <artifactId>persistence-api</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
@@ -362,11 +340,10 @@
         <maven-compiler-plugin.version>2.5.1</maven-compiler-plugin.version>
         <appengine-maven-plugin.version>1.7.3</appengine-maven-plugin.version>
         <!-- persistence -->
-        <datanucleus.version>1.1.5</datanucleus.version>
-        <geronimo-jpa_3.0_spec.version>1.1.1</geronimo-jpa_3.0_spec.version>
+        <datanucleus.version>3.1.1</datanucleus.version>
         <geronimo-jta_1.1_spec.version>1.1.1</geronimo-jta_1.1_spec.version>
         <!-- google appengine persistence -->
-        <datanucleus-appengine.version>1.0.10</datanucleus-appengine.version>
+        <datanucleus-appengine.version>2.1.1</datanucleus-appengine.version>
         <appengine-SDK.version>1.7.3</appengine-SDK.version>
         <!-- mail -->
         <mail.version>1.4.1</mail.version>

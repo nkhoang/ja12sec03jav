@@ -19,8 +19,7 @@ public class WordEntityDaoTest extends LocalDatastoreTestCase {
     @Test
     public void testSaveAWord() {
         LOG.info("Testing save a word.");
-        WordEntity entity = new WordEntity();
-        entity.setWord("hello");
+        WordEntity entity = new WordEntity("hello", WordEntity.WordType.NOUN);
 
         WordEntity word = dao.save(entity);
         // check entity
@@ -29,5 +28,22 @@ public class WordEntityDaoTest extends LocalDatastoreTestCase {
         LOG.debug("Found word: " + dbWord);
         Assert.assertNotNull(dbWord);
         Assert.assertNotNull(dbWord.getTimeStamp());
+    }
+
+    @Test
+    public void testGetWordByName() {
+        LOG.info("Testing get word by name");
+
+        saveSampleWords();
+
+        WordEntity word = dao.getWordByName("house");
+        Assert.assertEquals("house", word.getWord());
+    }
+
+    private void saveSampleWords() {
+        WordEntity word = new WordEntity("house", WordEntity.WordType.NOUN);
+        dao.save(word);
+        word = new WordEntity("crew", WordEntity.WordType.NOUN);
+        dao.save(word);
     }
 }

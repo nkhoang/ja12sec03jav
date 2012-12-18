@@ -1,16 +1,18 @@
 package com.googleappengine.model;
 
+import com.google.appengine.api.datastore.Key;
+
 /**
  * @author hnguyen
  */
 public class BaseEntity {
-    private Long id;
+    private Key id;
 
-    public Long getId() {
+    public Key getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Key id) {
         this.id = id;
     }
 }
