@@ -11,6 +11,7 @@
     <inceptionYear>2013</inceptionYear>
     <modules>
         <module>core</module>
+        <module>web</module>
     </modules>
 
     <build>
@@ -44,30 +45,6 @@
                 <artifactId>appengine-maven-plugin</artifactId>
                 <version>${appengine-maven-plugin.version}</version>
             </plugin>
-            <!-- Datanucleus Enhancer -->
-            <plugin>
-                <groupId>org.datanucleus</groupId>
-                <artifactId>maven-datanucleus-plugin</artifactId>
-                <version>3.1.1</version>
-                <configuration>
-                    <verbose>true</verbose>
-                    <api>JPA</api>
-                    <verbose>true</verbose>
-                    <persistenceUnitName>pum</persistenceUnitName>
-                    <enhancerName>ASM</enhancerName>
-                    <!-- do not set this to true - fixed the error in windows -->
-                    <fork>false</fork>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>enhance</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
         </plugins>
     </build>
 
@@ -76,12 +53,15 @@
 
     <dependencyManagement>
         <dependencies>
+
+            <!-- ########################################################### -->
+            <!--                      PERSISTENCE                            -->
+            <!-- ########################################################### -->
             <dependency>
                 <groupId>org.datanucleus</groupId>
                 <artifactId>datanucleus-api-jpa</artifactId>
                 <version>3.1.1</version>
             </dependency>
-            <!-- persistence -->
             <dependency>
                 <groupId>org.apache.geronimo.specs</groupId>
                 <artifactId>geronimo-jpa_2.0_spec</artifactId>
@@ -104,20 +84,20 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-            <!-- google appengine persistence -->
             <dependency>
                 <groupId>com.google.appengine.orm</groupId>
                 <artifactId>datanucleus-appengine</artifactId>
                 <version>${datanucleus-appengine.version}</version>
                 <scope>runtime</scope>
             </dependency>
-            <!-- Google App Engine API -->
+            <!-- ########################################################### -->
+            <!--                      GOOGLE APP ENGINE API                  -->
+            <!-- ########################################################### -->
             <dependency>
                 <groupId>com.google.appengine</groupId>
                 <artifactId>appengine-api-1.0-sdk</artifactId>
                 <version>${appengine-SDK.version}</version>
             </dependency>
-            <!-- provided -->
             <dependency>
                 <groupId>com.google.appengine</groupId>
                 <artifactId>appengine-api-stubs</artifactId>
@@ -140,7 +120,14 @@
                 <artifactId>mail</artifactId>
                 <version>${mail.version}</version>
             </dependency>
-            <!-- spring -->
+            <!-- ########################################################### -->
+            <!--                      SPRING                                 -->
+            <!-- ########################################################### -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-aspects</artifactId>
@@ -224,25 +211,78 @@
                 <artifactId>spring-context</artifactId>
                 <version>${spring.version}</version>
             </dependency>
+            <!-- ########################################################### -->
+            <!--                         SPRING SECURITY                     -->
+            <!-- ########################################################### -->
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-core</artifactId>
+                <version>${spring.security.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-expression</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-core</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-context</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-tx</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-config</artifactId>
+                <version>${spring.security.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-taglibs</artifactId>
+                <version>${spring.security.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>spring-jdbc</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-context-support</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
             <!-- logging -->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>jcl-over-slf4j</artifactId>
                 <version>${slf4j.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>jul-to-slf4j</artifactId>
                 <version>${slf4j.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
                 <version>${slf4j.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-log4j12</artifactId>
@@ -325,11 +365,63 @@
                 <artifactId>commons-httpclient</artifactId>
                 <version>${commons-httpclient.version}</version>
             </dependency>
-            <!-- testing -->
+            <!-- ########################################################### -->
+            <!--                      TESTING                                -->
+            <!-- ########################################################### -->
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
+            </dependency>
+            <!-- ########################################################### -->
+            <!--                      WEBSERVICE                             -->
+            <!-- ########################################################### -->
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-common-utilities</artifactId>
+                <version>${cxf.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>spring-context</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-core</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-frontend-jaxrs</artifactId>
+                <version>${cxf.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>spring-core</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>wstx-asl</artifactId>
+                        <groupId>org.codehaus.woodstox</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>jaxb-impl</artifactId>
+                        <groupId>com.sun.xml.bind</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-databinding-aegis</artifactId>
+                <!-- 2.3.4 or 2.4.0 -->
+                <version>${cxf.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>jaxb-impl</artifactId>
+                        <groupId>com.sun.xml.bind</groupId>
+                    </exclusion>
+                </exclusions>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -364,6 +456,10 @@
         <commons.fileupload.version>1.2.2</commons.fileupload.version>
         <commons.io.version>2.1</commons.io.version>
         <junit.version>4.10</junit.version>
+        <!-- WS -->
+        <cxf.version>2.4.2</cxf.version>
+        <!-- Spring Security -->
+        <spring.security.version>3.1.0.RELEASE</spring.security.version>
     </properties>
     <profiles>
     </profiles>

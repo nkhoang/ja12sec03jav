@@ -9,7 +9,7 @@
        "
        default-lazy-init="true">
     <!-- specify which package to scan for annotations -->
-    <context:component-scan base-package="com.googleappengine" />
+    <context:component-scan base-package="com.googleappengine.dao" />
 
     <!-- JPA entity manager -->
     <bean id="entityManagerFactory"

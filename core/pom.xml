@@ -6,7 +6,7 @@
     <artifactId>google-appengine-core</artifactId>
     <groupId>com.googleappengine</groupId>
     <version>1.0</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
     <name>GoogleAppengine Core</name>
     <parent>
         <artifactId>google-appengine</artifactId>
@@ -28,6 +28,30 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
+                </executions>
+            </plugin>
+
+            <!-- Datanucleus Enhancer -->
+            <plugin>
+                <groupId>org.datanucleus</groupId>
+                <artifactId>maven-datanucleus-plugin</artifactId>
+                <version>3.1.1</version>
+                <configuration>
+                    <verbose>true</verbose>
+                    <api>JPA</api>
+                    <verbose>true</verbose>
+                    <persistenceUnitName>pum</persistenceUnitName>
+                    <enhancerName>ASM</enhancerName>
+                    <!-- do not set this to true - fixed the error in windows -->
+                    <fork>false</fork>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>enhance</goal>
+                        </goals>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>
@@ -100,7 +124,9 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
         </dependency>
-        <!-- logging -->
+        <!-- ########################################################### -->
+        <!--                             LOGGING                         -->
+        <!-- ########################################################### -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
@@ -226,6 +252,21 @@
                     <groupId>javax.xml.bind</groupId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <!-- ########################################################### -->
+        <!--                         SPRING SECURITY                     -->
+        <!-- ########################################################### -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
         </dependency>
     </dependencies>
     <properties>

@@ -20,6 +20,5 @@ public class OxfordLookupServiceTest extends LocalDatastoreTestCase {
         Word w = oxfordLookupService.lookup("come");
         w.getDescription();
         Assert.assertNotNull(w.getPhraseList());
-        LOG.info("JSON: " + WordUtil.toJson(w));
     }
 }
