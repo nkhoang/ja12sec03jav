@@ -2,14 +2,18 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:tx="http://www.springframework.org/schema/tx"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/data/jpa
+       http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
        "
        default-lazy-init="true">
-    <!-- specify which package to scan for annotations -->
-    <context:component-scan base-package="com.googleappengine.dao" />
+    <!-- repositories - spring-data -->
+    <jpa:repositories base-package="com.googleappengine.repository"/>
 
     <!-- JPA entity manager -->
     <bean id="entityManagerFactory"
@@ -18,7 +22,7 @@
         <property name="persistenceUnitName" value="pum"/>
     </bean>
     <!-- Spring Transaction Management -->
-    <bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
 
@@ -27,8 +31,8 @@
     <!-- enable @PersistenceContext -->
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
     <!-- enable annotation -->
-    <context:annotation-config />
+    <context:annotation-config/>
     <!-- enable transaction management in spring -->
-    <tx:annotation-driven transaction-manager="txManager" />
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 </beans>
 

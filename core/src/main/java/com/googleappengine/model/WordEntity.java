@@ -12,12 +12,13 @@ public class WordEntity extends BaseEntity {
      * Word Type.
      */
     public enum WordType {
-        ADJECTIVE, ADVERT, NOUN, PRONOUN, VERB
+        ADJECTIVE, ADVERB, NOUN, PRONOUN, VERB
     }
 
-    public WordEntity() {}
+    public WordEntity() {
+    }
 
-    public WordEntity(String description, WordType type) {
+    public WordEntity(String description, String type) {
         this.word = description;
         this.wordType = type;
     }
@@ -31,9 +32,9 @@ public class WordEntity extends BaseEntity {
     @Basic
     private Long timeStamp;
 
-    @Enumerated
+    @Basic
     @Column(name = "WORD_TYPE")
-    private WordType wordType;
+    private String wordType;
 
     @Override
     @Id
@@ -72,11 +73,11 @@ public class WordEntity extends BaseEntity {
         this.timeStamp = timeStamp;
     }
 
-    public WordType getWordType() {
+    public String getWordType() {
         return wordType;
     }
 
-    public void setWordType(WordType wordType) {
+    public void setWordType(String wordType) {
         this.wordType = wordType;
     }
 
@@ -88,6 +89,6 @@ public class WordEntity extends BaseEntity {
     @Override
     public String toString() {
         return String.format("[id: %s, description: %s, time: %s, type: %s]", getId(), getWord(), getTimeStamp(),
-                getWordType().name());
+                getWordType());
     }
 }
