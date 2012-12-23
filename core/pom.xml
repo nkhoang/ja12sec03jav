@@ -31,7 +31,9 @@
                 </executions>
             </plugin>
 
-            <!-- Datanucleus Enhancer -->
+            <!-- ########################################################### -->
+            <!--                    DATANUCLEUS ENHANCER                     -->
+            <!-- ########################################################### -->
             <plugin>
                 <groupId>org.datanucleus</groupId>
                 <artifactId>maven-datanucleus-plugin</artifactId>
@@ -58,7 +60,9 @@
     </build>
 
     <dependencies>
-        <!-- persistence -->
+        <!-- ########################################################### -->
+        <!--                         PERSISTENCE                         -->
+        <!-- ########################################################### -->
         <dependency>
             <groupId>org.apache.geronimo.specs</groupId>
             <artifactId>geronimo-jpa_2.0_spec</artifactId>
@@ -82,13 +86,17 @@
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-api-jpa</artifactId>
         </dependency>
-        <!-- Google appengine persistence -->
+        <!-- ########################################################### -->
+        <!--                GOOGLE APPENGINE PERSISTENCE                 -->
+        <!-- ########################################################### -->
         <dependency>
             <groupId>com.google.appengine.orm</groupId>
             <artifactId>datanucleus-appengine</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <!-- Google App Engine API -->
+        <!-- ########################################################### -->
+        <!--                    GOOGLE APPENGINE API                     -->
+        <!-- ########################################################### -->
         <dependency>
             <groupId>com.google.appengine</groupId>
             <artifactId>appengine-api-1.0-sdk</artifactId>
@@ -106,7 +114,9 @@
             <groupId>com.google.appengine</groupId>
             <artifactId>appengine-testing</artifactId>
         </dependency>
-        <!-- for google mail -->
+        <!-- ########################################################### -->
+        <!--                              MAIL                           -->
+        <!-- ########################################################### -->
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
@@ -226,13 +236,17 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
         </dependency>
-        <!-- HTML parser -->
+        <!-- ########################################################### -->
+        <!--                         HTML PARSER                     -->
+        <!-- ########################################################### -->
         <dependency>
             <groupId>net.htmlparser.jericho</groupId>
             <artifactId>jericho-html</artifactId>
             <version>3.2</version>
         </dependency>
-        <!-- jaxb -->
+        <!-- ########################################################### -->
+        <!--                              JAXB                           -->
+        <!-- ########################################################### -->
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>

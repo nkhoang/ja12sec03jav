@@ -11,16 +11,26 @@ public class WordEntity extends BaseEntity {
     /**
      * Word Type.
      */
-    public enum WordType {
+    public static enum WordType {
         ADJECTIVE, ADVERB, NOUN, PRONOUN, VERB
+    }
+
+    public static enum WordDict {
+        OXFORD, VDICT
     }
 
     public WordEntity() {
     }
 
-    public WordEntity(String description, String type) {
+    public WordEntity(WordDict type, String description, String text) {
+        this.dictType = type;
         this.word = description;
-        this.wordType = type;
+        this.wordJSON = new Text(text);
+    }
+
+    public WordEntity(WordDict type, String description) {
+        this.dictType = type;
+        this.word = description;
     }
 
     @Basic
@@ -31,10 +41,9 @@ public class WordEntity extends BaseEntity {
     private Text wordJSON;
     @Basic
     private Long timeStamp;
-
-    @Basic
-    @Column(name = "WORD_TYPE")
-    private String wordType;
+    @Enumerated
+    @Column(name = "DICT_TYPE")
+    private WordDict dictType;
 
     @Override
     @Id
@@ -73,22 +82,22 @@ public class WordEntity extends BaseEntity {
         this.timeStamp = timeStamp;
     }
 
-    public String getWordType() {
-        return wordType;
-    }
-
-    public void setWordType(String wordType) {
-        this.wordType = wordType;
-    }
-
     @PrePersist
     public void prePersist() {
         this.timeStamp = System.currentTimeMillis();
     }
 
+    public WordDict getDictType() {
+        return dictType;
+    }
+
+    public void setDictType(WordDict dictType) {
+        this.dictType = dictType;
+    }
+
     @Override
     public String toString() {
-        return String.format("[id: %s, description: %s, time: %s, type: %s]", getId(), getWord(), getTimeStamp(),
-                getWordType());
+        return String.format("[id: %s, description: %s, time: %s, dictType: %s]", getId(), getWord(), getTimeStamp(),
+                getDictType().name());
     }
 }

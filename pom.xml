@@ -11,18 +11,17 @@
     <inceptionYear>2013</inceptionYear>
     <modules>
         <module>core</module>
+        <module>lucene</module>
         <module>web</module>
     </modules>
 
     <build>
         <plugins>
-            <!-- clean -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
                 <version>2.5</version>
             </plugin>
-            <!-- compiler -->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
@@ -39,7 +38,6 @@
                 <executions>
                 </executions>
             </plugin>
-            <!-- App-engine plugin -->
             <plugin>
                 <groupId>com.google.appengine</groupId>
                 <artifactId>appengine-maven-plugin</artifactId>
@@ -267,7 +265,9 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-            <!-- logging -->
+            <!-- ########################################################### -->
+            <!--                              LOGGING                        -->
+            <!-- ########################################################### -->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>jcl-over-slf4j</artifactId>

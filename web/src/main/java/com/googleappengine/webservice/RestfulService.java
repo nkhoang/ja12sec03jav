@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -21,11 +22,13 @@ public class RestfulService {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("test")
-    public String testWebService() {
+    @Path("lookup")
+    public String lookupWord(@PathParam(value = "word") String word) {
         if (LOG.isDebugEnabled()) {
-            LOG.debug("Running testWebService");
+            LOG.debug(String.format("Lookup word: %s", word));
         }
+
+
         return "success";
     }
 }

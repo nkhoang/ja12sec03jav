@@ -12,7 +12,7 @@ import java.util.List;
 public interface WordRepository extends CrudRepository<WordEntity, Key> {
     List<WordEntity> findByWord(String word);
 
-    List<WordEntity> findByWordType(String wordType);
+    List<WordEntity> findByDictType(WordEntity.WordDict type);
 
-    List<WordEntity> findByWordAndWordType(String word, String wordType);
+    List<WordEntity> findByWordAndDictType(String word, WordEntity.WordDict type);
 }

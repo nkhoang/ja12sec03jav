@@ -22,19 +22,21 @@ public class WordEntityDaoTest extends LocalDatastoreTestCase {
 
 
     @Test
-    public void testWordRepository() {
-        saveSampleWords();
-
-        Iterable<WordEntity> words = wordRepository.findAll();
-        Assert.assertTrue(words.iterator().hasNext());
+    public void testFindByWordDict() {
+        List<WordEntity> entities = wordRepository.findByDictType(WordEntity.WordDict.VDICT);
+        Assert.assertNotNull(entities);
+        Assert.assertEquals("Incorrect total word count.", 2, entities.size());
+        Assert.assertEquals("house", entities.get(0).getWord());
     }
 
     @Test
-    public void tetFindByWordType() {
-        List<WordEntity> entities = wordRepository.findByWordType(WordEntity.WordType.ADJECTIVE.name());
+    public void testFindByWordAndDictType() {
+        List<WordEntity> entities = wordRepository.findByWordAndDictType("house", WordEntity.WordDict.VDICT);
         Assert.assertNotNull(entities);
         Assert.assertEquals("Incorrect total word count.", 1, entities.size());
+        Assert.assertEquals("house", entities.get(0).getWord());
     }
+
 
     @Test
     public void testFindByDescription() {
@@ -44,23 +46,14 @@ public class WordEntityDaoTest extends LocalDatastoreTestCase {
         Assert.assertEquals("house", entities.get(0).getWord());
     }
 
-    @Test
-    public void testFindWordByDescriptionAndWordType() {
-        List<WordEntity> entities = wordRepository.findByWordAndWordType("house",
-                WordEntity.WordType.NOUN.name());
-        Assert.assertNotNull(entities);
-        Assert.assertEquals("Incorrect total word count.", 1, entities.size());
-        Assert.assertEquals("house", entities.get(0).getWord());
-        Assert.assertEquals(WordEntity.WordType.NOUN.name(), entities.get(0).getWordType());
-    }
 
     @Before
     public void saveSampleWords() {
-        WordEntity word = new WordEntity("house", WordEntity.WordType.NOUN.name());
+        WordEntity word = new WordEntity(WordEntity.WordDict.VDICT, "house");
         wordRepository.save(word);
-        word = new WordEntity("house", WordEntity.WordType.ADJECTIVE.name());
+        word = new WordEntity(WordEntity.WordDict.OXFORD, "house");
         wordRepository.save(word);
-        word = new WordEntity("crew", WordEntity.WordType.NOUN.name());
+        word = new WordEntity(WordEntity.WordDict.VDICT, "crew");
         wordRepository.save(word);
     }
 }

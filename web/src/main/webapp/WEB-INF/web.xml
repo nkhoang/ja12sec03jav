@@ -10,9 +10,9 @@
     </context-param>
 
     <context-param>
-      <param-name>compressMode</param-name>
-      <!--<param-value>-min-ob.js</param-value>-->
-      <param-value>.js</param-value>
+        <param-name>compressMode</param-name>
+        <!--<param-value>-min-ob.js</param-value>-->
+        <param-value>.js</param-value>
     </context-param>
     <!--
          Fallback locale if no bundles found for browser's preferred locale
@@ -99,11 +99,11 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-<!--
-    <listener>
-        <listener-class>com.nkhoang.gae.listener.StartupListener</listener-class>
-    </listener>
--->
+    <!--
+        <listener>
+            <listener-class>com.googleappengineppengine.gae.listener.StartupListener</listener-class>
+        </listener>
+    -->
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
