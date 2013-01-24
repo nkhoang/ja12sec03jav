@@ -4,8 +4,3 @@
 core/target/*
 web/target/*
 web/*.iml
-lucene/googleappengine-lucene.iml
-
-web/google-appengine-web.iml
-
-web/google-appengine-web.iml
