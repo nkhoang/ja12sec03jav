@@ -2,7 +2,6 @@ package com.googleappengine.service;
 
 import com.googleappengine.LocalDatastoreTestCase;
 import com.googleappengine.model.json.Word;
-import com.googleappengine.util.WordUtil;
 import junit.framework.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;

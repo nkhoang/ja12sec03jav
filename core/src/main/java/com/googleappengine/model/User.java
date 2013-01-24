@@ -2,7 +2,7 @@ package com.googleappengine.model;
 
 import com.google.appengine.api.datastore.Key;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.GrantedAuthorityImpl;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
@@ -90,7 +90,7 @@ public class User extends BaseEntity implements Serializable, UserDetails {
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>(0);
 
         for (String s : roleNames) {
-            authorities.add(new GrantedAuthorityImpl(s));
+            authorities.add(new SimpleGrantedAuthority(s));
         }
 
         return authorities;
