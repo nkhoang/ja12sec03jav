@@ -4,3 +4,4 @@
 core/target/*
 web/target/*
 web/*.iml
+datanucleus.log

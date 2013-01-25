@@ -1,7 +1,9 @@
 package com.googleappengine.webservice;
 
+import com.googleappengine.service.WordService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.stereotype.Service;
 
 import javax.ws.rs.*;
@@ -24,7 +26,6 @@ public class RestfulService {
         if (LOG.isDebugEnabled()) {
             LOG.debug(String.format("Lookup word: %s", word));
         }
-
 
         return "success";
     }

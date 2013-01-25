@@ -1,6 +1,7 @@
 package com.googleappengine.service.impl;
 
 import com.googleappengine.model.WordEntity;
+import com.googleappengine.repository.WordRepository;
 import com.googleappengine.service.LookupService;
 import com.googleappengine.service.WordService;
 import org.slf4j.Logger;
@@ -16,11 +17,13 @@ import org.springframework.stereotype.Service;
 public class WordServiceImpl implements WordService {
     private static final Logger LOG = LoggerFactory.getLogger(WordServiceImpl.class.getCanonicalName());
     @Autowired
+    private WordRepository wordRepository;
+    @Autowired
     private LookupService vdictLookupService;
     @Autowired
     private LookupService oxfordLookupService;
 
     public WordEntity lookup(String word) {
-        return null;
+        return wordRepository.save(new WordEntity(WordEntity.WordDict.VDICT, "sample", "sample"));
     }
 }
