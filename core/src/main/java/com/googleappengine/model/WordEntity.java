@@ -4,10 +4,11 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.Text;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "WORD")
-public class WordEntity extends BaseEntity {
+public class WordEntity extends BaseEntity implements Serializable{
     /**
      * Word Type.
      */

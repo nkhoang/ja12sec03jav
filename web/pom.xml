@@ -159,6 +159,13 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- jackson for cxf -->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-jaxrs</artifactId>
+            <version>${jackson-jaxrs.version}</version>
+        </dependency>
+
         <!-- ########################################################### -->
         <!--                      SPRING LIBRARY                         -->
         <!-- ########################################################### -->
@@ -236,6 +243,7 @@
         <jsp.version>2.1</jsp.version>
         <jstl.version>1.1.2</jstl.version>
         <jasypt.version>1.8</jasypt.version>
+        <jackson-jaxrs.version>1.9.11</jackson-jaxrs.version>
     </properties>
 </project>
 

@@ -3,5 +3,6 @@
 *.iml
 core/target/*
 web/target/*
+lucene/target/*
 web/*.iml
 datanucleus.log

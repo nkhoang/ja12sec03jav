@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 /**
  * @author hnguyen.
@@ -24,6 +26,10 @@ public class WordServiceImpl implements WordService {
     private LookupService oxfordLookupService;
 
     public WordEntity lookup(String word) {
-        return wordRepository.save(new WordEntity(WordEntity.WordDict.VDICT, "sample", "sample"));
+        return wordRepository.save(new WordEntity(WordEntity.WordDict.VDICT, word, word));
+    }
+
+    public List<WordEntity> search(String word) {
+        return wordRepository.findByWordAndDictType(word, WordEntity.WordDict.VDICT);
     }
 }
