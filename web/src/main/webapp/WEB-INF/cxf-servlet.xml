@@ -5,15 +5,12 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
             http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
             http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
-
     <import resource="classpath:META-INF/cxf/cxf.xml"/>
-
 
     <!-- use jackson with cxf -->
     <bean id="jsonProvider" class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>
     <bean id="logInbound" class="org.apache.cxf.interceptor.LoggingInInterceptor"/>
     <bean id="logOutbound" class="org.apache.cxf.interceptor.LoggingOutInterceptor"/>
-
 
     <jaxrs:server address="/">
         <jaxrs:features>
@@ -27,9 +24,7 @@
         </jaxrs:providers>
     </jaxrs:server>
 
-    <!--
-    logging
-    -->
+    <!-- logging -->
     <cxf:bus>
         <cxf:inInterceptors>
             <ref bean="logInbound"/>
