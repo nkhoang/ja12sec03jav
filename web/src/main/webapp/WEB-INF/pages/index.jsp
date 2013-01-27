@@ -3,38 +3,6 @@
 <head><title><fmt:message key="login.title"/></title>
     <link rel="stylesheet" type="text/css" media="all" href="<c:url value='/styles/login-form.css' />"/>
     <link rel="stylesheet" type="text/css" media="all" href="<c:url value='/styles/login-layout.css' />"/>
-    <style type="text/css">
-        body {
-            margin: 0;
-        }
-        body p {
-            text-align: center;
-        }
-
-        #login-form {
-            height: auto;
-            width: 300px;
-            margin: 0 auto;
-            padding: 30px 50px;
-            -webkit-box-shadow: 0 0 15px #7CBDFF;
-            -moz-box-shadow: 0 0 15px #7CBDFF;
-            box-shadow: 0 0 15px #7CBDFF;
-            border-radius: 15px 20px 15px 20px / 20px 15px 20px 15px;
-            background-color: #FFF;
-        }
-
-        #login-form label {
-            color: #666666;
-            font-size: 120%;
-            text-shadow: 0px 1px 2px #D3D3D3;
-        }
-
-        #content table {
-            height: 70%;
-        }
-
-
-    </style>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 </head>
 <body>

@@ -1,0 +1,69 @@
+@import "common";
+@import "compass/css3/border-radius";
+@import "compass/css3/images";
+@import "compass/css3/box-shadow";
+
+body {
+  color: #666;
+  text-shadow: 0px 1px 1px $text_shadow_color;
+  margin: 0;
+  p {
+    text-align: center;
+  }
+}
+
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+#login-form {
+  height: auto;
+  width: 300px;
+  margin: 0 auto;
+  padding: 30px 50px;
+  @include box-shadow(0 0 15px #7CBDFF);
+  @include border-radius(15px 20px 15px 20px);
+  background-color: #FFF;
+  label {
+    color: #666666;
+    font-size: 120%;
+    text-shadow: 0px 1px 2px #D3D3D3;
+  }
+}
+
+/* form style */
+input[type="text"], input[type="password"] {
+  background: none repeat scroll 0 0 #FAFAFA;
+  border-color: #C6C6C6 #DADADA #EAEAEA;
+  @include border-radius(4px, 4px);
+  color: #222;
+  font-size: 1.4em;
+  display: block;
+  margin-bottom: 7px;
+}
+
+/* form structure */
+input[type="password"], input[type="text"], input[type="button"] {
+  border-width: 1px;
+  line-height: 1.1em;
+  padding: 10px;
+  vertical-align: middle;
+}
+
+input[type="button"] {
+  @include background-image(linear-gradient(center top, #5393C2 40%, #3A77A4));
+  @include border-radius(8px 8px);
+  border-color: #3A77A4;
+  @include box-shadow(0 1px 0 0 rgba(255, 255, 255, 0.4) inset);
+  color: #FFFFFF;
+  font-size: 1.2em;
+  font-weight: bolder;
+  letter-spacing: -0.015em;
+  line-height: 1.2em;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin-top: 5px;
+}

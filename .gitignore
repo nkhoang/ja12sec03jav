@@ -6,3 +6,4 @@ web/target/*
 lucene/target/*
 web/*.iml
 datanucleus.log
+.sass-cache

@@ -30,6 +30,25 @@
                 <executions>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>de.saumya.mojo</groupId>
+                <artifactId>gem-maven-plugin</artifactId>
+                <version>0.28.6</version>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <phase>compile</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!--jrubyVersion>1.6.4</jrubyVersion-->
+                    <execArgs>/usr/bin/compass compile ${basedir}/src/main/webapp/compass</execArgs>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -242,6 +261,12 @@
             <artifactId>joda-time</artifactId>
             <version>2.1</version>
         </dependency>
+        <dependency>
+            <groupId>rubygems</groupId>
+            <artifactId>compass</artifactId>
+            <version>0.11.7</version>
+            <type>gem</type>
+        </dependency>
     </dependencies>
     <properties>
         <jaxb.impl.version>2.1.12</jaxb.impl.version>
@@ -251,5 +276,11 @@
         <jasypt.version>1.8</jasypt.version>
         <jackson-jaxrs.version>1.9.11</jackson-jaxrs.version>
     </properties>
+    <repositories>
+        <repository>
+            <id>rubygems-releases</id>
+            <url>http://rubygems-proxy.torquebox.org/releases</url>
+        </repository>
+    </repositories>
 </project>
 
