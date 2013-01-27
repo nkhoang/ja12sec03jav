@@ -8,12 +8,6 @@
         <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
         <param-value>ApplicationResources</param-value>
     </context-param>
-
-    <context-param>
-        <param-name>compressMode</param-name>
-        <!--<param-value>-min-ob.js</param-value>-->
-        <param-value>.js</param-value>
-    </context-param>
     <!--
          Fallback locale if no bundles found for browser's preferred locale
      -->
@@ -30,6 +24,7 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>
             classpath:/applicationContext-dao.xml
+            classpath:/applicationContext-resources.xml
             classpath:/applicationContext-service.xml
             /WEB-INF/security.xml
         </param-value>

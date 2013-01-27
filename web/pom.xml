@@ -96,6 +96,7 @@
         <!-- ########################################################### -->
         <!--                             JSTL                            -->
         <!-- ########################################################### -->
+        <!-- JSTL -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
@@ -112,6 +113,11 @@
                     <groupId>javax.servlet</groupId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>taglibs</groupId>
+            <artifactId>standard</artifactId>
+            <version>${jstl.version}</version>
         </dependency>
         <!-- ########################################################### -->
         <!--                      WEBSERVICE                             -->

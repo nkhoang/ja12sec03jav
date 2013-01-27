@@ -17,16 +17,17 @@ public class WordEntity extends BaseEntity implements Serializable{
     }
 
     public static enum WordDict {
-        OXFORD, VDICT
+        OXFORD, VDICT, EN, VN
     }
 
     public WordEntity() {
     }
 
-    public WordEntity(WordDict type, String description, String text) {
-        this.dictType = type;
+    public WordEntity(WordDict dictType, WordType wordType, String description, String text) {
+        this.dictType = dictType;
         this.word = description;
         this.wordJSON = new Text(text);
+        this.wordType = wordType;
     }
 
     public WordEntity(WordDict type, String description) {
@@ -45,6 +46,9 @@ public class WordEntity extends BaseEntity implements Serializable{
     @Enumerated
     @Column(name = "DICT_TYPE")
     private WordDict dictType;
+    @Enumerated
+    @Column(name = "WORD_TYPE")
+    private WordType wordType;
 
     @Override
     @Id
@@ -94,6 +98,14 @@ public class WordEntity extends BaseEntity implements Serializable{
 
     public void setDictType(WordDict dictType) {
         this.dictType = dictType;
+    }
+
+    public WordType getWordType() {
+        return wordType;
+    }
+
+    public void setWordType(WordType wordType) {
+        this.wordType = wordType;
     }
 
     @Override

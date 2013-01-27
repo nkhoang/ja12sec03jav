@@ -26,7 +26,7 @@ public class WordServiceImpl implements WordService {
     private LookupService oxfordLookupService;
 
     public WordEntity lookup(String word) {
-        return wordRepository.save(new WordEntity(WordEntity.WordDict.VDICT, word, word));
+        return wordRepository.save(new WordEntity(WordEntity.WordDict.VDICT, WordEntity.WordType.ADJECTIVE, word, word));
     }
 
     public List<WordEntity> search(String word) {

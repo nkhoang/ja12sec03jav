@@ -16,17 +16,17 @@
 
     <http create-session="always">
         <anonymous/>
+        <intercept-url pattern="/index.html" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <!-- jax-rs interface -->
         <intercept-url pattern="/ws/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/remote_api*/*" access="IS_AUTHENTICATED_ANONYMOUSLY,ROLE_ADMIN,ROLE_USER"/>
         <intercept-url pattern="/_ah/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-        <intercept-url pattern="/index.html" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/**" access="ROLE_ADMIN,ROLE_USER"/>
 
         <logout logout-url="/logout.html" logout-success-url="/login.html?loggedout=true"/>
         <form-login login-page="/index.html"
-                    authentication-failure-url="/user/login.html?error=true"
-                    login-processing-url="/login_check.html" default-target-url="/user/login.html"
+                    authentication-failure-url="/index.html?error=true"
+                    login-processing-url="/login_check.html" default-target-url="/login.html"
                     always-use-default-target="true"/>
     </http>
     <!-- must have alias otherwise it will fail to detect exactly which authentication manager -->
