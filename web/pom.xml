@@ -83,7 +83,6 @@
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-api-jpa</artifactId>
-            <scope>provided</scope>
         </dependency>
         <!-- ########################################################### -->
         <!--                          JASYPT                             -->
@@ -143,46 +142,7 @@
         <!-- ########################################################### -->
         <dependency>
             <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-common-utilities</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>spring-context</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-core</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-frontend-jaxrs</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>spring-core</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>wstx-asl</artifactId>
-                    <groupId>org.codehaus.woodstox</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>jaxb-impl</artifactId>
-                    <groupId>com.sun.xml.bind</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-databinding-aegis</artifactId>
-            <!-- 2.3.4 or 2.4.0 -->
-            <exclusions>
-                <exclusion>
-                    <artifactId>jaxb-impl</artifactId>
-                    <groupId>com.sun.xml.bind</groupId>
-                </exclusion>
-            </exclusions>
+            <artifactId>cxf-bundle</artifactId>
         </dependency>
         <!-- jackson for cxf -->
         <dependency>
@@ -219,6 +179,11 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+        </dependency>
+
         <!-- ########################################################### -->
         <!--                         SPRING SECURITY                     -->
         <!-- ########################################################### -->
@@ -266,6 +231,12 @@
             <artifactId>compass</artifactId>
             <version>0.11.7</version>
             <type>gem</type>
+        </dependency>
+        <!-- html parser -->
+        <dependency>
+            <groupId>net.htmlparser.jericho</groupId>
+            <artifactId>jericho-html</artifactId>
+            <version>3.2</version>
         </dependency>
     </dependencies>
     <properties>

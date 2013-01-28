@@ -11,21 +11,21 @@
     <bean id="jsonProvider" class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>
     <bean id="logInbound" class="org.apache.cxf.interceptor.LoggingInInterceptor"/>
     <bean id="logOutbound" class="org.apache.cxf.interceptor.LoggingOutInterceptor"/>
+    <bean id="cors-filter" class="org.apache.cxf.rs.security.cors.CrossOriginResourceSharingFilter" />
 
-    <jaxrs:server address="/">
-        <jaxrs:features>
-            <cxf:logging/>
-        </jaxrs:features>
+    <jaxrs:server address="/" >
         <jaxrs:serviceBeans>
             <ref bean="restfulService"/>
         </jaxrs:serviceBeans>
         <jaxrs:providers>
             <ref bean="jsonProvider"/>
+            <ref bean="cors-filter" />
         </jaxrs:providers>
     </jaxrs:server>
 
     <!-- logging -->
     <cxf:bus>
+
         <cxf:inInterceptors>
             <ref bean="logInbound"/>
         </cxf:inInterceptors>

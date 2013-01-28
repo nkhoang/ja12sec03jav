@@ -2,15 +2,26 @@ package com.googleappengine.webservice;
 
 import com.googleappengine.model.WordEntity;
 import com.googleappengine.service.WordService;
+import net.htmlparser.jericho.Source;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.io.IOUtils;
+import org.apache.cxf.common.util.StringUtils;
+import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.ws.rs.*;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import java.io.DataOutputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.List;
 
 @Service(value = "restfulService")
@@ -57,6 +68,40 @@ public class RestfulService {
             return result.get(0);
         }
         return "nothing found";
+    }
+
+    @GET
+    @Produces(MediaType.TEXT_HTML)
+    @Path("loadcities")
+    @CrossOriginResourceSharing(allowAllOrigins = true)
+    public String loadCities() {
+        try {
+            URL url = new URL("http://thoitrangdshop.vn/loadselect_ajax.aspx");
+
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoOutput(true);
+            connection.setDoInput(true);
+            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+            connection.setRequestProperty("Accept", "*/*");
+            connection.setRequestProperty("X-Requested-With", "XMLHttpRequest");
+            connection.setRequestMethod("POST");
+
+            //Send request
+            DataOutputStream wr = new DataOutputStream (
+                    connection.getOutputStream ());
+            wr.writeBytes ("type=loadcity");
+            wr.flush ();
+            wr.close ();
+            // get inputStream
+            InputStream is = connection.getInputStream();
+
+            String s = new String(IOUtils.toByteArray(is), Charset.forName("UTF-8"));
+
+            return s;
+        } catch (Exception ex) {
+            LOG.debug("Something wrong.", ex);
+        }
+        return null;
     }
 }
 

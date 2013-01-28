@@ -16,11 +16,14 @@
     <!-- repositories - spring-data -->
     <jpa:repositories base-package="com.googleappengine.repository"/>
 
+    <bean id="persistentProvider" class="org.datanucleus.api.jpa.PersistenceProviderImpl" />
+
     <!-- JPA entity manager -->
     <bean id="entityManagerFactory"
           class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
         <!-- load persistence unit from persistence.xml -->
         <property name="persistenceUnitName" value="pum"/>
+        <property name="persistenceProvider" ref="persistentProvider"/>
     </bean>
     <!-- Spring Transaction Management -->
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
