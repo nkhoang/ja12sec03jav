@@ -2,10 +2,9 @@ package com.googleappengine.webservice;
 
 import com.googleappengine.model.WordEntity;
 import com.googleappengine.service.WordService;
-import net.htmlparser.jericho.Source;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.io.IOUtils;
-import org.apache.cxf.common.util.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -74,9 +73,12 @@ public class RestfulService {
     @Produces(MediaType.TEXT_HTML)
     @Path("loadcities")
     @CrossOriginResourceSharing(allowAllOrigins = true)
-    public String loadCities() {
+    public String loadCities(@QueryParam("queryStr") String queryStr, @QueryParam("url") String urlStr) {
         try {
-            URL url = new URL("http://thoitrangdshop.vn/loadselect_ajax.aspx");
+            if (StringUtils.isBlank(urlStr)) {
+                urlStr = "http://thoitrangdshop.vn/loadselect_ajax.aspx";
+            }
+            URL url = new URL(urlStr);
 
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setDoOutput(true);
@@ -87,11 +89,13 @@ public class RestfulService {
             connection.setRequestMethod("POST");
 
             //Send request
-            DataOutputStream wr = new DataOutputStream (
-                    connection.getOutputStream ());
-            wr.writeBytes ("type=loadcity");
-            wr.flush ();
-            wr.close ();
+            if (StringUtils.isNotBlank(queryStr)) {
+                DataOutputStream wr = new DataOutputStream(
+                        connection.getOutputStream());
+                wr.writeBytes(queryStr);
+                wr.flush();
+                wr.close();
+            }
             // get inputStream
             InputStream is = connection.getInputStream();
 
