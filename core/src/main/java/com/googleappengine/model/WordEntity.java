@@ -1,5 +1,6 @@
 package com.googleappengine.model;
 
+
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.Text;
 

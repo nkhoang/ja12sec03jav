@@ -382,32 +382,52 @@
             <!-- ########################################################### -->
             <dependency>
                 <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-bundle</artifactId>
-                <version>2.7.2</version>
+                <artifactId>cxf-rt-rs-security-cors</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-common-utilities</artifactId>
+                <version>2.5.8</version>
                 <exclusions>
                     <exclusion>
-                        <artifactId>spring-aop</artifactId>
+                        <artifactId>spring-context</artifactId>
                         <groupId>org.springframework</groupId>
                     </exclusion>
                     <exclusion>
-                        <artifactId>spring-asm</artifactId>
+                        <artifactId>spring-core</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-frontend-jaxrs</artifactId>
+                <version>${cxf.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>spring-core</artifactId>
                         <groupId>org.springframework</groupId>
                     </exclusion>
                     <exclusion>
-                        <artifactId>spring-jms</artifactId>
-                        <groupId>org.springframework</groupId>
+                        <artifactId>wstx-asl</artifactId>
+                        <groupId>org.codehaus.woodstox</groupId>
                     </exclusion>
                     <exclusion>
-                        <artifactId>spring-tx</artifactId>
-                        <groupId>org.springframework</groupId>
+                        <artifactId>jaxb-impl</artifactId>
+                        <groupId>com.sun.xml.bind</groupId>
                     </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-databinding-aegis</artifactId>
+                <!-- 2.3.4 or 2.4.0 -->
+                <version>${cxf.version}</version>
+                <exclusions>
                     <exclusion>
-                        <artifactId>spring-web</artifactId>
-                        <groupId>org.springframework</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>asm</artifactId>
-                        <groupId>asm</groupId>
+                        <artifactId>jaxb-impl</artifactId>
+                        <groupId>com.sun.xml.bind</groupId>
                     </exclusion>
                 </exclusions>
             </dependency>
@@ -418,13 +438,13 @@
         <!-- Plugins version -->
         <maven-dependency-plugin.version>2.5.1</maven-dependency-plugin.version>
         <maven-compiler-plugin.version>2.5.1</maven-compiler-plugin.version>
-        <appengine-maven-plugin.version>1.7.3</appengine-maven-plugin.version>
+        <appengine-maven-plugin.version>1.7.4</appengine-maven-plugin.version>
         <!-- persistence -->
         <datanucleus.version>3.1.3</datanucleus.version>
         <geronimo-jta_1.1_spec.version>1.1.1</geronimo-jta_1.1_spec.version>
         <!-- google appengine persistence -->
         <datanucleus-appengine.version>2.1.1</datanucleus-appengine.version>
-        <appengine-SDK.version>1.7.3</appengine-SDK.version>
+        <appengine-SDK.version>1.7.4</appengine-SDK.version>
         <!-- mail -->
         <mail.version>1.4.1</mail.version>
         <!-- Spring -->
@@ -444,6 +464,8 @@
         <commons.fileupload.version>1.2.2</commons.fileupload.version>
         <commons.io.version>2.1</commons.io.version>
         <junit.version>4.10</junit.version>
+        <!-- WS -->
+        <cxf.version>2.7.2</cxf.version>
         <!-- Spring Security -->
         <spring.security.version>3.1.0.RELEASE</spring.security.version>
     </properties>

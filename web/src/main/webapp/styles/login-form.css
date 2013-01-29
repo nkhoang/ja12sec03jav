@@ -1,20 +1,20 @@
-/* line 6, ../compass/login-form.scss */
+/* line 6, G:/Projects/Github/ja12sec03jav/web/src/main/webapp/compass/login-form.scss */
 body {
   color: #666;
   text-shadow: 0px 1px 1px lightgrey;
   margin: 0; }
-  /* line 10, ../compass/login-form.scss */
+  /* line 10, G:/Projects/Github/ja12sec03jav/web/src/main/webapp/compass/login-form.scss */
   body p {
     text-align: center; }
 
-/* line 15, ../compass/login-form.scss */
+/* line 15, G:/Projects/Github/ja12sec03jav/web/src/main/webapp/compass/login-form.scss */
 a {
   text-decoration: none; }
-  /* line 17, ../compass/login-form.scss */
+  /* line 17, G:/Projects/Github/ja12sec03jav/web/src/main/webapp/compass/login-form.scss */
   a:hover {
     text-decoration: underline; }
 
-/* line 22, ../compass/login-form.scss */
+/* line 22, G:/Projects/Github/ja12sec03jav/web/src/main/webapp/compass/login-form.scss */
 #login-form {
   height: auto;
   width: 300px;
@@ -31,14 +31,14 @@ a {
   -khtml-border-radius: 15px 20px 15px 20px;
   border-radius: 15px 20px 15px 20px;
   background-color: #FFF; }
-  /* line 30, ../compass/login-form.scss */
+  /* line 30, G:/Projects/Github/ja12sec03jav/web/src/main/webapp/compass/login-form.scss */
   #login-form label {
     color: #666666;
     font-size: 120%;
     text-shadow: 0px 1px 2px lightgrey; }
 
 /* form style */
-/* line 38, ../compass/login-form.scss */
+/* line 38, G:/Projects/Github/ja12sec03jav/web/src/main/webapp/compass/login-form.scss */
 input[type="text"], input[type="password"] {
   background: none repeat scroll 0 0 #fafafa;
   border-color: #c6c6c6 #dadada #eaeaea;
@@ -54,14 +54,14 @@ input[type="text"], input[type="password"] {
   margin-bottom: 7px; }
 
 /* form structure */
-/* line 49, ../compass/login-form.scss */
+/* line 49, G:/Projects/Github/ja12sec03jav/web/src/main/webapp/compass/login-form.scss */
 input[type="password"], input[type="text"], input[type="button"] {
   border-width: 1px;
   line-height: 1.1em;
   padding: 10px;
   vertical-align: middle; }
 
-/* line 56, ../compass/login-form.scss */
+/* line 56, G:/Projects/Github/ja12sec03jav/web/src/main/webapp/compass/login-form.scss */
 input[type="button"] {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(40%, #5393c2), color-stop(100%, #3a77a4));
   background-image: -webkit-linear-gradient(center top, #5393c2 40%, #3a77a4);

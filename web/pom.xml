@@ -46,7 +46,7 @@
                 </executions>
                 <configuration>
                     <!--jrubyVersion>1.6.4</jrubyVersion-->
-                    <execArgs>/usr/bin/compass compile ${basedir}/src/main/webapp/compass</execArgs>
+                    <execArgs>C:/Ruby193/bin/compass compile ${basedir}/src/main/webapp/compass</execArgs>
                 </configuration>
             </plugin>
         </plugins>
@@ -149,7 +149,19 @@
         <!-- ########################################################### -->
         <dependency>
             <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-bundle</artifactId>
+            <artifactId>cxf-rt-rs-security-cors</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-common-utilities</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxrs</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-databinding-aegis</artifactId>
         </dependency>
         <!-- jackson for cxf -->
         <dependency>
