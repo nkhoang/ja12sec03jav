@@ -134,7 +134,6 @@
         <dependency>
             <groupId>com.google.appengine</groupId>
             <artifactId>appengine-api-stubs</artifactId>
-            <scope>${appengine-api-stubs.scope}</scope>
         </dependency>
         <dependency>
             <groupId>com.google.appengine</groupId>

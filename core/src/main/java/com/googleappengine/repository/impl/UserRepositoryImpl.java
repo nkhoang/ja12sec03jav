@@ -10,10 +10,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+@Repository(value = "userDao")
 public class UserRepositoryImpl extends BaseDaoImpl implements UserDao {
     private static final Logger LOG = LoggerFactory.getLogger(UserRepositoryImpl.class);
     @Autowired

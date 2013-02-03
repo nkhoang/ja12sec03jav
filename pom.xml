@@ -138,6 +138,12 @@
                 <groupId>com.mysema.querydsl</groupId>
                 <artifactId>querydsl-core</artifactId>
                 <version>${querydsl-jpa.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>asm</groupId>
+                        <artifactId>asm</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>com.mysema.querydsl</groupId>
