@@ -16,7 +16,7 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @TestExecutionListeners({DependencyInjectionTestExecutionListener.class})
-@ContextConfiguration(locations = {"classpath:applicationContext-dao.xml"})
+@ContextConfiguration(locations = {"classpath:applicationContext-dao.xml", "classpath*:applicationContext-service.xml"})
 public class LocalDatastoreTestCase {
     private final LocalServiceTestHelper helper = new LocalServiceTestHelper(new LocalDatastoreServiceTestConfig());
 

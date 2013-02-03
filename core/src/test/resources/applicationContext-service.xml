@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+       default-lazy-init="true">
+    <!-- Salt generator -->
+    <bean id="passwordSaltGenerator" class="org.jasypt.salt.FixedStringSaltGenerator">
+        <property name="salt" value="${jasypt.digest.salt}"/>
+    </bean>
+    <!-- Digester for password encoder -->
+    <bean id="jasyptStringDigester" class="org.jasypt.digest.StandardStringDigester">
+        <property name="algorithm" value="${jasypt.digest.algorithm}"/>
+        <property name="iterations" value="${jasypt.digest.iterations}"/>
+        <property name="saltGenerator" ref="passwordSaltGenerator"/>
+    </bean>
+
+    <!-- Password encoder -->
+    <bean id="passwordEncoder" class="org.jasypt.spring.security3.PasswordEncoder">
+        <property name="stringDigester" ref="jasyptStringDigester"/>
+    </bean>
+    <!-- Jasypt Property Salt Generator -->
+    <bean id="propertySaltGenerator" class="org.jasypt.salt.FixedStringSaltGenerator">
+        <property name="salt" value="property salt..."/>
+    </bean>
+    <!-- Properties Files Encrypter -->
+    <bean id="propertyEncryptor" class="org.jasypt.encryption.pbe.StandardPBEStringEncryptor">
+        <property name="algorithm" value="PBEWithSHA1AndRC2_40"/>
+        <property name="keyObtentionIterations" value="1000"/>
+        <property name="saltGenerator" ref="propertySaltGenerator"/>
+        <property name="password" value="property password"/>
+    </bean>
+    <!-- Properties Decoder -->
+    <bean id="propertyConfigurer"
+          class="org.jasypt.spring.properties.EncryptablePropertyPlaceholderConfigurer">
+        <constructor-arg ref="propertyEncryptor"/>
+        <property name="locations">
+            <list>
+                <value>classpath:encryption.properties</value>
+            </list>
+        </property>
+        <property name="nullValue" value="null"/>
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+    </bean>
+</beans>

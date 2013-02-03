@@ -43,6 +43,14 @@
                 <artifactId>appengine-maven-plugin</artifactId>
                 <version>${appengine-maven-plugin.version}</version>
             </plugin>
+            <!-- ########################################################### -->
+            <!--                    QUERY DSL                                -->
+            <!-- ########################################################### -->
+            <plugin>
+                <groupId>com.mysema.maven</groupId>
+                <artifactId>apt-maven-plugin</artifactId>
+                <version>1.0.6</version>
+            </plugin>
         </plugins>
     </build>
 
@@ -118,6 +126,25 @@
                 <artifactId>mail</artifactId>
                 <version>${mail.version}</version>
             </dependency>
+            <!-- ########################################################### -->
+            <!--                           DATABASE                          -->
+            <!-- ########################################################### -->
+            <dependency>
+                <groupId>com.mysema.querydsl</groupId>
+                <artifactId>querydsl-jpa</artifactId>
+                <version>${querydsl-jpa.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.mysema.querydsl</groupId>
+                <artifactId>querydsl-core</artifactId>
+                <version>${querydsl-jpa.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.mysema.querydsl</groupId>
+                <artifactId>querydsl-apt</artifactId>
+                <version>${querydsl-jpa.version}</version>
+            </dependency>
+
             <!-- ########################################################### -->
             <!--                      SPRING                                 -->
             <!-- ########################################################### -->
@@ -270,6 +297,24 @@
                 </exclusions>
             </dependency>
             <!-- ########################################################### -->
+            <!--                              JASYPT                         -->
+            <!-- ########################################################### -->
+            <dependency>
+                <groupId>org.jasypt</groupId>
+                <artifactId>jasypt</artifactId>
+                <version>${jasypt.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>commons-lang</artifactId>
+                        <groupId>commons-lang</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>commons-codec</artifactId>
+                        <groupId>commons-codec</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- ########################################################### -->
             <!--                              LOGGING                        -->
             <!-- ########################################################### -->
             <dependency>
@@ -295,6 +340,11 @@
             <!-- ########################################################### -->
             <!--                      COMMON LIBRARY                         -->
             <!-- ########################################################### -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>14.0-rc1</version>
+            </dependency>
             <dependency>
                 <groupId>commons-fileupload</groupId>
                 <artifactId>commons-fileupload</artifactId>
@@ -438,7 +488,7 @@
         <!-- Plugins version -->
         <maven-dependency-plugin.version>2.5.1</maven-dependency-plugin.version>
         <maven-compiler-plugin.version>2.5.1</maven-compiler-plugin.version>
-        <appengine-maven-plugin.version>1.7.4</appengine-maven-plugin.version>
+        <appengine-maven-plugin.version>1.7.3</appengine-maven-plugin.version>
         <!-- persistence -->
         <datanucleus.version>3.1.3</datanucleus.version>
         <geronimo-jta_1.1_spec.version>1.1.1</geronimo-jta_1.1_spec.version>
@@ -447,6 +497,8 @@
         <appengine-SDK.version>1.7.4</appengine-SDK.version>
         <!-- mail -->
         <mail.version>1.4.1</mail.version>
+        <!-- Jasypt -->
+        <jasypt.version>1.8</jasypt.version>
         <!-- Spring -->
         <spring.version>3.2.0.RELEASE</spring.version>
         <spring.security.version>3.1.3.RELEASE</spring.security.version>
@@ -468,6 +520,7 @@
         <cxf.version>2.7.2</cxf.version>
         <!-- Spring Security -->
         <spring.security.version>3.1.0.RELEASE</spring.security.version>
+        <querydsl-jpa.version>2.9.0</querydsl-jpa.version>
     </properties>
     <profiles>
     </profiles>

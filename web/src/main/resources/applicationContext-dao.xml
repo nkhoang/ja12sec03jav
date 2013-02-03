@@ -21,7 +21,7 @@
     <!-- repositories - spring-data -->
     <jpa:repositories base-package="com.googleappengine"/>
 
-    <bean name="userDao" class="com.googleappengine.dao.impl.UserDaoImpl" scope="prototype"/>
+    <bean name="userDao" class="com.googleappengine.repository.impl.UserRepositoryImpl" scope="prototype"/>
 
     <bean id="persistentProvider" class="org.datanucleus.api.jpa.PersistenceProviderImpl" />
 

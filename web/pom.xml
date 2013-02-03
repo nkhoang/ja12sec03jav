@@ -31,6 +31,7 @@
                 </executions>
             </plugin>
 
+<!--
             <plugin>
                 <groupId>de.saumya.mojo</groupId>
                 <artifactId>gem-maven-plugin</artifactId>
@@ -45,10 +46,11 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <!--jrubyVersion>1.6.4</jrubyVersion-->
+                    &lt;!&ndash;jrubyVersion>1.6.4</jrubyVersion&ndash;&gt;
                     <execArgs>C:/Ruby193/bin/compass compile ${basedir}/src/main/webapp/compass</execArgs>
                 </configuration>
             </plugin>
+-->
         </plugins>
     </build>
 
@@ -64,6 +66,10 @@
         <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
         </dependency>
         <!-- ########################################################### -->
         <!--                      PERSISTENCE                             -->
@@ -90,24 +96,6 @@
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-api-jpa</artifactId>
-        </dependency>
-        <!-- ########################################################### -->
-        <!--                          JASYPT                             -->
-        <!-- ########################################################### -->
-        <dependency>
-            <groupId>org.jasypt</groupId>
-            <artifactId>jasypt</artifactId>
-            <version>${jasypt.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-lang</artifactId>
-                    <groupId>commons-lang</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>commons-codec</artifactId>
-                    <groupId>commons-codec</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <!-- ########################################################### -->
         <!--                             WEB                             -->
@@ -245,12 +233,14 @@
             <artifactId>joda-time</artifactId>
             <version>2.1</version>
         </dependency>
+<!--
         <dependency>
             <groupId>rubygems</groupId>
             <artifactId>compass</artifactId>
             <version>0.11.7</version>
             <type>gem</type>
         </dependency>
+-->
         <!-- html parser -->
         <dependency>
             <groupId>net.htmlparser.jericho</groupId>
@@ -263,14 +253,13 @@
         <servlet.version>2.5</servlet.version>
         <jsp.version>2.1</jsp.version>
         <jstl.version>1.1.2</jstl.version>
-        <jasypt.version>1.8</jasypt.version>
         <jackson-jaxrs.version>1.9.11</jackson-jaxrs.version>
     </properties>
     <repositories>
-        <repository>
+        <!--<repository>
             <id>rubygems-releases</id>
             <url>http://rubygems-proxy.torquebox.org/releases</url>
-        </repository>
+        </repository>-->
     </repositories>
 </project>
 
