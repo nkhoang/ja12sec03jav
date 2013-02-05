@@ -28,7 +28,8 @@ public class LuceneUtilsTest {
 
     @Test
     public void testSearchById() throws Exception {
-        Assert.assertTrue("Failed to search existing word", CollectionUtils.isNotEmpty(LuceneSearchUtils.performSearchById("cons")));
+        Assert.assertTrue("Failed to search existing word", CollectionUtils.isNotEmpty(LuceneSearchUtils
+                .performSearchById("cons")));
     }
 
     @Test

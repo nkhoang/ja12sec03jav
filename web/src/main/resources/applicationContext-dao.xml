@@ -16,7 +16,7 @@
     <!-- repositories - spring-data -->
     <jpa:repositories base-package="com.googleappengine.repository"/>
 
-    <bean id="persistentProvider" class="org.datanucleus.api.jpa.PersistenceProviderImpl" />
+    <bean id="persistentProvider" class="org.datanucleus.api.jpa.PersistenceProviderImpl"/>
 
     <!-- JPA entity manager -->
     <bean id="entityManagerFactory"

@@ -31,5 +31,6 @@ public class LocalDatastoreTestCase {
     }
 
     @Test
-    public void emptyTest() {}
+    public void emptyTest() {
+    }
 }

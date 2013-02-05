@@ -1,11 +1,14 @@
 package com.googleappengine.model;
 
 import com.google.appengine.api.datastore.Key;
+import com.googleappengine.validator.CheckPassword;
+import com.googleappengine.validator.group.UserRegistrationCheck;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,15 +30,20 @@ public class User extends BaseEntity implements Serializable, UserDetails {
     public void setId(Key id) {
         super.setId(id);
     }
+
     @Basic
+    @NotNull(groups = UserRegistrationCheck.class, message = "First name is required.")
     private String firstName;
     @Basic
+    @NotNull(groups = UserRegistrationCheck.class, message = "Last name is required.")
     private String lastName;
     @Basic
     private String middleName;
     @Basic
+    @NotNull(groups = UserRegistrationCheck.class, message = "Username is required.")
     private String username;
     @Basic
+    @CheckPassword(groups = UserRegistrationCheck.class)
     private String password;
     @Basic
     private String email;
@@ -70,10 +78,6 @@ public class User extends BaseEntity implements Serializable, UserDetails {
     private boolean accountLocked;
     @Transient
     private boolean credentialExpired;
-
-    public static final String[] SKIP_FIELDS_USER =
-            {"jdoDetachedState", "password", "roleNames", "wordList", "enabled", "accountExpired",
-                    "accountLocked", "credentialExpired"};
 
     public enum PersonalIdType {
         CIVIL,

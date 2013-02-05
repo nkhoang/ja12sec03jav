@@ -5,11 +5,12 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.Text;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "WORD")
-public class WordEntity extends BaseEntity implements Serializable{
+public class WordEntity extends BaseEntity implements Serializable {
     /**
      * Word Type.
      */
@@ -38,17 +39,22 @@ public class WordEntity extends BaseEntity implements Serializable{
 
     @Basic
     @Column(name = "DESCRIPTION")
+    @NotNull
     private String word;
     @Lob
     @Column(name = "DATA")
+    @NotNull
     private Text wordJSON;
     @Basic
+    @NotNull
     private Long timeStamp;
     @Enumerated
     @Column(name = "DICT_TYPE")
+    @NotNull
     private WordDict dictType;
     @Enumerated
     @Column(name = "WORD_TYPE")
+    @NotNull
     private WordType wordType;
 
     @Override

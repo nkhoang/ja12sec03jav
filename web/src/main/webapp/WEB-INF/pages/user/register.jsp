@@ -36,43 +36,43 @@ Ext.onReady(function () {
 
     // The data store holding the states; shared by each of the ComboBox examples below
     var genderStore = Ext.create('Ext.data.Store', {
-        fields:['abbr', 'name'],
-        data:[
-            {"abbr":"Male", "name":"Nam"},
-            {"abbr":"Female", "name":"N&#7919;"}
+        fields: ['abbr', 'name'],
+        data: [
+            {"abbr": "Male", "name": "Nam"},
+            {"abbr": "Female", "name": "N&#7919;"}
         ]
     });
 
     var formPanel = Ext.widget('form', {
-        renderTo:'form-container',
-        frame:true,
-        width:450,
-        bodyPadding:10,
-        bodyBorder:true,
-        title:'Th&#244;ng tin &#273;&#259;ng k&#237;',
+        renderTo: 'form-container',
+        frame: true,
+        width: 450,
+        bodyPadding: 10,
+        bodyBorder: true,
+        title: 'Th&#244;ng tin &#273;&#259;ng k&#237;',
 
-        defaults:{
-            anchor:'100%'
+        defaults: {
+            anchor: '100%'
         },
-        fieldDefaults:{
-            labelAlign:'left',
-            msgTarget:'under',
-            invalidCls:'' //unset the invalidCls so individual fields do not get styled as invalid
+        fieldDefaults: {
+            labelAlign: 'left',
+            msgTarget: 'under',
+            invalidCls: '' //unset the invalidCls so individual fields do not get styled as invalid
         },
 
         /*
          * Listen for validity change on the entire form and update the combined error icon
          */
-        listeners:{
-            fieldvaliditychange:function () {
+        listeners: {
+            fieldvaliditychange: function () {
                 // this.updateErrorState();
             },
-            fielderrorchange:function () {
+            fielderrorchange: function () {
                 // this.updateErrorState();
             }
         },
 
-        updateErrorState:function () {
+        updateErrorState: function () {
             var me = this,
                     errorCmp, fields, errors;
 
@@ -82,156 +82,156 @@ Ext.onReady(function () {
                 errors = [];
                 fields.each(function (field) {
                     Ext.Array.forEach(field.getErrors(), function (error) {
-                        errors.push({name:field.getFieldLabel(), error:error});
+                        errors.push({name: field.getFieldLabel(), error: error});
                     });
                 });
                 errorCmp.setErrors(errors);
                 me.hasBeenDirty = true;
             }
         },
-        items:[
+        items: [
             {
-                xtype:'textfield',
-                name:'firstName',
-                fieldLabel:'<fmt:message key="register.firstName" />',
-                allowBlank:false,
-                blankText:'<fmt:message key="register.error.missing" />',
-                minLength:2,
-                minLengthText:'<fmt:message key="register.error.min" />',
-                maxLength:30,
-                maxLengthText:'<fmt:message key="register.error.max" />'
+                xtype: 'textfield',
+                name: 'firstName',
+                fieldLabel: '<fmt:message key="register.firstName" />',
+                allowBlank: false,
+                blankText: '<fmt:message key="register.error.missing" />',
+                minLength: 2,
+                minLengthText: '<fmt:message key="register.error.min" />',
+                maxLength: 30,
+                maxLengthText: '<fmt:message key="register.error.max" />'
             },
             {
-                xtype:'textfield',
-                name:'middleName',
-                fieldLabel:'<fmt:message key="register.middleName" />',
-                minLength:2,
-                minLengthText:'<fmt:message key="register.error.min" />',
-                maxLength:30,
-                maxLengthText:'<fmt:message key="register.error.max" />'
+                xtype: 'textfield',
+                name: 'middleName',
+                fieldLabel: '<fmt:message key="register.middleName" />',
+                minLength: 2,
+                minLengthText: '<fmt:message key="register.error.min" />',
+                maxLength: 30,
+                maxLengthText: '<fmt:message key="register.error.max" />'
             },
             {
-                xtype:'textfield',
-                name:'lastName',
-                fieldLabel:'<fmt:message key="register.lastName" />',
-                allowBlank:false,
-                blankText:'<fmt:message key="register.error.missing" />',
-                minLength:2,
-                minLengthText:'<fmt:message key="register.error.min" />',
-                maxLength:30,
-                maxLengthText:'<fmt:message key="register.error.max" />'
+                xtype: 'textfield',
+                name: 'lastName',
+                fieldLabel: '<fmt:message key="register.lastName" />',
+                allowBlank: false,
+                blankText: '<fmt:message key="register.error.missing" />',
+                minLength: 2,
+                minLengthText: '<fmt:message key="register.error.min" />',
+                maxLength: 30,
+                maxLengthText: '<fmt:message key="register.error.max" />'
             },
             {
-                xtype:'textfield',
-                name:'username',
-                fieldLabel:'<fmt:message key="register.userName" />',
-                allowBlank:false,
-                blankText:'<fmt:message key="register.error.missing" />',
-                minLength:5,
-                minLengthText:'<fmt:message key="register.error.min" />',
-                maxLength:25,
-                maxLengthText:'<fmt:message key="register.error.max" />'
+                xtype: 'textfield',
+                name: 'username',
+                fieldLabel: '<fmt:message key="register.userName" />',
+                allowBlank: false,
+                blankText: '<fmt:message key="register.error.missing" />',
+                minLength: 5,
+                minLengthText: '<fmt:message key="register.error.min" />',
+                maxLength: 25,
+                maxLengthText: '<fmt:message key="register.error.max" />'
             },
             {
-                xtype:'textfield',
-                name:'email',
-                fieldLabel:'<fmt:message key="register.email" />',
-                vtype:'email',
-                emailText:'<fmt:message key="register.email.error.invalid" />',
-                allowBlank:false,
-                blankText:'<fmt:message key="register.error.missing" />'
+                xtype: 'textfield',
+                name: 'email',
+                fieldLabel: '<fmt:message key="register.email" />',
+                vtype: 'email',
+                emailText: '<fmt:message key="register.email.error.invalid" />',
+                allowBlank: false,
+                blankText: '<fmt:message key="register.error.missing" />'
             },
             {
-                xtype:'textfield',
-                name:'password1',
-                fieldLabel:'<fmt:message key="register.password" />',
-                inputType:'password',
-                style:'margin-top:15px',
-                allowBlank:false,
-                blankText:'<fmt:message key="register.error.missing" />',
-                minLength:6,
-                minLengthText:'<fmt:message key="register.error.min" />',
-                maxLength:15,
-                maxLengthText:'<fmt:message key="register.error.max" />'
+                xtype: 'textfield',
+                name: 'password1',
+                fieldLabel: '<fmt:message key="register.password" />',
+                inputType: 'password',
+                style: 'margin-top:15px',
+                allowBlank: false,
+                blankText: '<fmt:message key="register.error.missing" />',
+                minLength: 6,
+                minLengthText: '<fmt:message key="register.error.min" />',
+                maxLength: 15,
+                maxLengthText: '<fmt:message key="register.error.max" />'
             },
             {
-                xtype:'textfield',
-                name:'password2',
-                fieldLabel:'<fmt:message key="register.repeatPassword" />',
-                inputType:'password',
-                allowBlank:false,
-                blankText:'<fmt:message key="register.error.missing" />',
+                xtype: 'textfield',
+                name: 'password2',
+                fieldLabel: '<fmt:message key="register.repeatPassword" />',
+                inputType: 'password',
+                allowBlank: false,
+                blankText: '<fmt:message key="register.error.missing" />',
                 /**
                  * Custom validator implementation - checks that the value matches what was entered into
                  * the password1 field.
                  */
-                validator:function (value) {
+                validator: function (value) {
                     var password1 = this.previousSibling('[name=password1]');
                     return (value === password1.getValue()) ? true : '<fmt:message key="register.repeatPassword.error.notMatch" />'
                 }
             },
             {
-                xtype:'textfield',
-                fieldLabel:'<fmt:message key="register.phoneNumber" />',
-                name:'phoneNumber',
-                hideTrigger:true,
-                minLength:7,
-                minLengthText:'<fmt:message key="register.error.min" />',
-                maxLength:13,
-                maxLengthText:'<fmt:message key="register.error.max" />'
+                xtype: 'textfield',
+                fieldLabel: '<fmt:message key="register.phoneNumber" />',
+                name: 'phoneNumber',
+                hideTrigger: true,
+                minLength: 7,
+                minLengthText: '<fmt:message key="register.error.min" />',
+                maxLength: 13,
+                maxLengthText: '<fmt:message key="register.error.max" />'
             },
             {
-                xtype:'datefield',
-                name:'birthDate',
-                editable:false,
-                invalidText:'<fmt:message key="register.error.date.invalid" />',
-                fieldLabel:'<fmt:message key="register.birthDate" />'
+                xtype: 'datefield',
+                name: 'birthDate',
+                editable: false,
+                invalidText: '<fmt:message key="register.error.date.invalid" />',
+                fieldLabel: '<fmt:message key="register.birthDate" />'
             },
             {
-                xtype:'radiogroup',
-                fieldLabel:'<fmt:message key="register.gender" />',
-                cls:'x-check-group-alt',
-                name:"gender",
-                items:[
-                    {boxLabel:'<fmt:message key="register.gender.male" />', name:'gender', inputValue:'MALE', checked:true},
-                    {boxLabel:'<fmt:message key="register.gender.female" />', name:'gender', inputValue:'FEMALE' }
+                xtype: 'radiogroup',
+                fieldLabel: '<fmt:message key="register.gender" />',
+                cls: 'x-check-group-alt',
+                name: "gender",
+                items: [
+                    {boxLabel: '<fmt:message key="register.gender.male" />', name: 'gender', inputValue: 'MALE', checked: true},
+                    {boxLabel: '<fmt:message key="register.gender.female" />', name: 'gender', inputValue: 'FEMALE' }
                 ]
             },
             {
-                xtype:'textfield',
-                fieldLabel:'<fmt:message key="register.personalId" />',
-                name:'personalId',
-                hideTrigger:true,
-                minLength:9,
-                minLengthText:'<fmt:message key="register.error.min" />',
-                maxLength:20,
-                maxLengthText:'<fmt:message key="register.error.max" />'
+                xtype: 'textfield',
+                fieldLabel: '<fmt:message key="register.personalId" />',
+                name: 'personalId',
+                hideTrigger: true,
+                minLength: 9,
+                minLengthText: '<fmt:message key="register.error.min" />',
+                maxLength: 20,
+                maxLengthText: '<fmt:message key="register.error.max" />'
             },
             {
-                xtype:'radiogroup',
-                name:'personalIdType',
-                fieldLabel:'<fmt:message key="register.personalId.type" />',
-                cls:'x-check-group-alt',
-                items:[
-                    {boxLabel:'CMND', name:'personalIdType', inputValue:'civil', checked:true},
-                    {boxLabel:'VISA', name:'personalIdType', inputValue:'visa' }
+                xtype: 'radiogroup',
+                name: 'personalIdType',
+                fieldLabel: '<fmt:message key="register.personalId.type" />',
+                cls: 'x-check-group-alt',
+                items: [
+                    {boxLabel: 'CMND', name: 'personalIdType', inputValue: 'civil', checked: true},
+                    {boxLabel: 'VISA', name: 'personalIdType', inputValue: 'visa' }
                 ]
             },
             {
-                xtype:'textfield',
-                name:'issuePlace',
-                fieldLabel:'<fmt:message key="register.issuePlace" />'
+                xtype: 'textfield',
+                name: 'issuePlace',
+                fieldLabel: '<fmt:message key="register.issuePlace" />'
             },
             {
-                xtype:'datefield',
-                name:'issueDate',
-                editable:false,
-                invalidText:'<fmt:message key="register.error.date.invalid" />',
-                fieldLabel:'<fmt:message key="register.issueDate" />'
+                xtype: 'datefield',
+                name: 'issueDate',
+                editable: false,
+                invalidText: '<fmt:message key="register.error.date.invalid" />',
+                fieldLabel: '<fmt:message key="register.issueDate" />'
             },
             {
-                contentEl:Ext.getDom('captcha'),
-                xtype:"panel"
+                contentEl: Ext.getDom('captcha'),
+                xtype: "panel"
             },
             /*
              * Terms of Use acceptance checkbox. Two things are special about this:
@@ -243,36 +243,36 @@ Ext.onReady(function () {
              *    custom getErrors method implementation.
              */
             {
-                xtype:'checkboxfield',
-                name:'acceptTerms',
-                fieldLabel:'<fmt:message key="register.termTitle"/>',
-                hideLabel:true,
-                style:'margin-top:15px',
-                boxLabel:'T&#244;i &#273;&#227; &#273;&#7885;c v&#224; ch&#7845;p nh&#7853;n <a href="http://www.sencha.com/legal/terms-of-use/" class="terms">&#272;i&#7873;u kho&#7843;n s&#7917; d&#7909;ng</a>.',
+                xtype: 'checkboxfield',
+                name: 'acceptTerms',
+                fieldLabel: '<fmt:message key="register.termTitle"/>',
+                hideLabel: true,
+                style: 'margin-top:15px',
+                boxLabel: 'T&#244;i &#273;&#227; &#273;&#7885;c v&#224; ch&#7845;p nh&#7853;n <a href="http://www.sencha.com/legal/terms-of-use/" class="terms">&#272;i&#7873;u kho&#7843;n s&#7917; d&#7909;ng</a>.',
 
                 // Listener to open the Terms of Use page link in a modal window
-                listeners:{
-                    click:{
-                        element:'boxLabelEl',
-                        fn:function (e) {
+                listeners: {
+                    click: {
+                        element: 'boxLabelEl',
+                        fn: function (e) {
                             var target = e.getTarget('.terms'),
                                     win;
                             if (target) {
                                 win = Ext.widget('window', {
-                                    title:'Terms of Use',
-                                    modal:true,
-                                    html:'<iframe src="' + target.href + '" width="950" height="500" style="border:0"></iframe>',
-                                    buttons:[
+                                    title: 'Terms of Use',
+                                    modal: true,
+                                    html: '<iframe src="' + target.href + '" width="950" height="500" style="border:0"></iframe>',
+                                    buttons: [
                                         {
-                                            text:'Decline',
-                                            handler:function () {
+                                            text: 'Decline',
+                                            handler: function () {
                                                 this.up('window').close();
                                                 formPanel.down('[name=acceptTerms]').setValue(false);
                                             }
                                         },
                                         {
-                                            text:'Accept',
-                                            handler:function () {
+                                            text: 'Accept',
+                                            handler: function () {
                                                 this.up('window').close();
                                                 formPanel.down('[name=acceptTerms]').setValue(true);
                                             }
@@ -287,23 +287,23 @@ Ext.onReady(function () {
                 },
 
                 // Custom validation logic - requires the checkbox to be checked
-                getErrors:function () {
+                getErrors: function () {
                     return this.getValue() ? [] : ['<fmt:message key="register.acceptTerm" /> ']
                 }
             }
         ],
 
-        dockedItems:[
+        dockedItems: [
             {
-                xtype:'container',
-                dock:'bottom',
-                layout:{
-                    type:'hbox',
-                    align:'middle'
+                xtype: 'container',
+                dock: 'bottom',
+                layout: {
+                    type: 'hbox',
+                    align: 'middle'
                 },
-                padding:'10 10 5',
+                padding: '10 10 5',
 
-                items:[
+                items: [
                     /*
                      {
                      xtype:'component',
@@ -357,27 +357,27 @@ Ext.onReady(function () {
                      }
                      },*/
                     {
-                        xtype:'button',
-                        formBind:true,
-                        disabled:true,
-                        text:'<fmt:message key="register.button.submit" />',
-                        width:140,
-                        handler:function () {
+                        xtype: 'button',
+                        formBind: true,
+                        disabled: true,
+                        text: '<fmt:message key="register.button.submit" />',
+                        width: 140,
+                        handler: function () {
                             var form = this.up('form').getForm();
                             form.submit({
-                                clientValidation:true,
-                                params:{
-                                    recaptchaResponse:$('#recaptcha_response_field').val(),
-                                    recaptchaChallenge:$('#recaptcha_challenge_field').val()
+                                clientValidation: true,
+                                params: {
+                                    recaptchaResponse: $('#recaptcha_response_field').val(),
+                                    recaptchaChallenge: $('#recaptcha_challenge_field').val()
                                 },
-                                url:'<c:url value="/user/registerUser.html" />',
-                                success:function (form, action) {
+                                url: '<c:url value="/user/registerUser.html" />',
+                                success: function (form, action) {
                                     Ext.Msg.alert('Success', action.result.msg + '<fmt:message key="register.success.text" />', function () {
                                         // redirect to the login page.
                                         window.location = "<c:url value="/user/index.html"/>"
                                     });
                                 },
-                                failure:function (form, action) {
+                                failure: function (form, action) {
                                     Ext.Msg.alert('Success', action.result.msg);
                                 }
                             });

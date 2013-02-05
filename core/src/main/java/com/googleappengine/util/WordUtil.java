@@ -12,7 +12,8 @@ import java.io.Writer;
 public class WordUtil {
     public static final Logger LOG = LoggerFactory.getLogger(WordUtil.class.getCanonicalName());
 
-    private WordUtil() {}
+    private WordUtil() {
+    }
 
     /**
      * Convert a word from {@link Word} obj to json string data.

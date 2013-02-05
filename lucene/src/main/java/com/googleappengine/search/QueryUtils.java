@@ -12,7 +12,8 @@ public class QueryUtils {
     /**
      * Search word by word content.
      *
-     * @param searchString the search string which will be split by spaces to compose a {@link org.apache.lucene.search.PhraseQuery}.
+     * @param searchString the search string which will be split by spaces to compose a {@link org.apache.lucene
+     * .search.PhraseQuery}.
      * @return the built {@link org.apache.lucene.search.PhraseQuery}.
      */
     public static Query buildPhraseQuery(String searchString) {

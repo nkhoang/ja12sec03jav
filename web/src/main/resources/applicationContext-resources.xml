@@ -7,7 +7,7 @@
             http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
     <!-- allow us to access property keys from beans. -->
     <util:properties id="encryption" location="classpath:encryption.properties"></util:properties>
-	<!-- For use in Spring + error message -->
+    <!-- For use in Spring + error message -->
     <bean id="messageSource"
           class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basenames">

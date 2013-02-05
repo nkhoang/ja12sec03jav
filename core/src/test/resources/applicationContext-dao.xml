@@ -16,7 +16,9 @@
     <!-- repositories - spring-data -->
     <jpa:repositories base-package="com.googleappengine.repository"/>
 
-    <bean id="persistentProvider" class="org.datanucleus.api.jpa.PersistenceProviderImpl" />
+    <bean id="persistentProvider" class="org.datanucleus.api.jpa.PersistenceProviderImpl"/>
+    <!-- validator -->
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
 
     <!-- JPA entity manager -->
     <bean id="entityManagerFactory"

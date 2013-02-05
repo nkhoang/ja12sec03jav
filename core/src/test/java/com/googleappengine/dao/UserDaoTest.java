@@ -3,15 +3,23 @@ package com.googleappengine.dao;
 import com.googleappengine.LocalDatastoreTestCase;
 import com.googleappengine.model.User;
 import com.googleappengine.repository.UserRepository;
+import com.googleappengine.util.ValidationUtils;
+import com.googleappengine.validator.group.UserRegistrationCheck;
 import junit.framework.Assert;
 import org.jasypt.spring.security3.PasswordEncoder;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.validation.Validator;
 import java.util.Date;
 
 public class UserDaoTest extends LocalDatastoreTestCase {
+    private static final Logger LOG = LoggerFactory.getLogger(UserDaoTest.class.getCanonicalName());
+    @Autowired
+    private Validator validator;
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -47,5 +55,20 @@ public class UserDaoTest extends LocalDatastoreTestCase {
         u2.setEmail("user02@user.com");
 
         userRepository.save(u1);
+    }
+
+    @Test
+    public void testValidateUser() {
+        User u1 = new User();
+        u1.setFirstName("1");
+        u1.setLastName("2");
+        u1.setPassword("123");
+        try {
+            ValidationUtils.checkConstraintViolations(validator.validate(u1, UserRegistrationCheck.class));
+            Assert.fail("Should throw exception here.");
+        } catch (Exception e) {
+            LOG.info(String.format("Validation exception message: %s", e.getMessage()));
+            // do nothing.
+        }
     }
 }

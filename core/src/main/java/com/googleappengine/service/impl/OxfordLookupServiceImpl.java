@@ -247,7 +247,8 @@ public class OxfordLookupServiceImpl implements LookupService {
                         Sense sense = null;
                         for (Element senseEntry : senseEntries) {
                             // there are 2 cases: one is div and ul > subsense, or just ul > sense.
-                            if (checkElementProperty(senseEntry, HTML_ATTR_CLASS, "sense") && checkElementName(senseEntry, "div")) {
+                            if (checkElementProperty(senseEntry, HTML_ATTR_CLASS,
+                                    "sense") && checkElementName(senseEntry, "div")) {
                                 isDIVCase = true;
                                 sense = processSense(senseEntry);
                                 if (sense != null) {

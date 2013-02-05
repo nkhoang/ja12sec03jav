@@ -20,9 +20,10 @@
                                 key="login.password"/>:</label>
                         <input type="password" name="password" id="password" size="25"/>
                         <input type="button" name="submit" value="<fmt:message key="login.submit" />"/>
-                        <br />
+                        <br/>
+
                         <div style="padding-top: 5px;">
-                            <fmt:message key="login.register" >
+                            <fmt:message key="login.register">
                                 <fmt:param><a href="<c:url value="/user/register.html"/>">&#273;&#226;y</a></fmt:param>
                             </fmt:message>
                         </div>
