@@ -11,10 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.io.DataOutputStream;
 import java.io.InputStream;
@@ -27,7 +24,7 @@ import java.util.List;
 @Path("/")
 public class RestfulService {
     private static Logger LOG = LoggerFactory.getLogger(RestfulService.class.getCanonicalName());
-
+    private static StringBuilder sb = new StringBuilder();
 
     @Autowired
     private WordService wordService;
@@ -106,6 +103,27 @@ public class RestfulService {
             LOG.debug("Something wrong.", ex);
         }
         return null;
+    }
+
+    @POST
+    @Path("sendlog")
+    @Produces(MediaType.TEXT_HTML)
+    @CrossOriginResourceSharing(allowAllOrigins = true)
+    public String sendLog(@FormParam(value = "log") String log) {
+        LOG.info(log);
+        sb.append(log);
+        return "ok";
+    }
+
+    @GET
+    @Path("getlog")
+    @Produces(MediaType.TEXT_HTML)
+    @CrossOriginResourceSharing(allowAllOrigins = true)
+    public String getLog() {
+        String result = sb.toString();
+        sb = new StringBuilder();
+
+        return result;
     }
 }
 
